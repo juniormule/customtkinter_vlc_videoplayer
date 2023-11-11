@@ -4,20 +4,17 @@
 # tkinter example for VLC Python bindings
 # This is an extension of an app created by Patrick Fay in 23-09-2015
 
-
-import vlc
 import os
-import pathlib
 import time
+import vlc
+import pathlib
 import platform
 import customtkinter as Ctk
 from customtkinter import filedialog
 from tkinter import messagebox
 from threading import Thread, Event
 
-
 Ctk.set_appearance_mode("System")
-
 
 class ttkTimer(Thread):
     def __init__(self, callback, tick) -> None:
@@ -95,6 +92,7 @@ class Player(Ctk.CTkFrame):
         self.timeslider.pack(side=Ctk.BOTTOM, fill=Ctk.X, expand=1)
         self.timeslider_last_update = time.time()
         ctrlpanel2.pack(side=Ctk.BOTTOM, fill=Ctk.X)
+        
         # Vlc player controls
         self.Instance = vlc.Instance("--no-xlib", "--vout", "x11")
         self.player = self.Instance.media_player_new()
@@ -123,8 +121,6 @@ class Player(Ctk.CTkFrame):
             self.OnOpen()
 
     def OnExit(self, evt):
-        """Closes the window.
-        """
         self.Close()
 
     def SetTitle(self, title: str):
@@ -235,8 +231,6 @@ class Player(Ctk.CTkFrame):
         return edialog
 
     def OnExit(self):
-        """Closes the window.
-        """
         self.Close()
 
 
